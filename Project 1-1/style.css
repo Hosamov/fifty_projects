@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  display: flex; /*Put boxes in a row*/
+  width: 90vw; /*90 viewport width*/
+  color: #fff;
+}
+
+.container a:link {
+  color: #fff;
+  underline: none;
+}
+
+.container a:visited {
+  color: #fff;
+}
+
+.container a:hover {
+  color: red;
+  underline: none;
+}
+
+.container a:active {
+  color: #eaeaea;
+}
+
+.panel {
+  background-size: cover; /* to preserve rounded corners on large screens*/
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer; /*change cursor to a pointer*/
+  flex: 0.5; /*Make all boxes even*/
+  background-color: green;
+  margin: 10px;
+  position: relative;
+  transition: flex 0.7s ease-in; /*take .7 seconds to ease-in on load*/
+}
+
+h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0; /*make invisible*/
+}
+
+.panel.active {
+  flex: 5; /*Set flex to 5 if active*/
+}
+
+.panel.active h3 {
+  opacity: 1; /*set opacity to 1 if active*/
+  transition: opacity 0.3s ease-in 0.4s; /*fade in once card is expanded*/
+}
+
+@media (max-width: 480px) { /*viewport settings for smaller screens*/
+  .container {
+    width: 100vw;
+  }
+
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
