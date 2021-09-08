@@ -4,11 +4,13 @@ const startBtn = document.getElementById('start-btn');
 const timeEl = document.getElementById('time');
 const scoreEl = document.getElementById('score');
 const messageEl = document.getElementById('message');
+const remainingEl = document.getElementById('insects-remaining');
 const gameContainer = document.getElementById('game-container');
 
 let seconds = 0;
 let score = 0;
 let selectedInsect = {};
+let insects = 0;
 
 startBtn.addEventListener('click', () => screens[0].classList.add('up'));
 
@@ -49,6 +51,8 @@ function createInsect() {
 
   gameContainer.appendChild(insect);
 
+  insects++;
+  remainingEl.innerHTML = `Remaining: ${insects}`;
 }
 
 function getRandomLocation() {
@@ -60,6 +64,7 @@ function getRandomLocation() {
 }
 
 function catchInsect() {
+  insects--;
   increaseScore();
   this.classList.add('caught');
   setTimeout(() => this.remove(), 2000);
